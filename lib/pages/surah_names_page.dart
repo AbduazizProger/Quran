@@ -1,38 +1,37 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:islam/models/suras.dart';
-import 'package:http/http.dart' as http;
-import 'package:islam/surah_widget.dart';
+import 'package:islam/pages/surah_page.dart';
 
 Future<List<Suras>> fetchSuras() async {
-  final response =
-      await http.get(Uri.parse('http://api.alquran.cloud/v1/surah'));
-  if (response.statusCode == 200) {
-    List<Suras> suras = [];
-    for (var el in jsonDecode(response.body)['data']) {
-      suras.add(Suras.fromJson(el));
-    }
-    return suras;
-  } else {
-    throw Exception('Failed to load suras');
+  final response = await rootBundle.loadString('assets/json/surah.json');
+  List<Suras> suras = [];
+  for (var el in jsonDecode(response)['data']) {
+    suras.add(Suras.fromJson(el));
   }
+  return suras;
 }
 
-class SurahNamesWidget extends StatefulWidget {
-  const SurahNamesWidget({super.key});
+class SurahNamesPage extends StatefulWidget {
+  const SurahNamesPage({super.key});
 
   @override
-  State<SurahNamesWidget> createState() => _SurahNamesWidgetState();
+  State<SurahNamesPage> createState() => _SurahNamesPageState();
 }
 
-class _SurahNamesWidgetState extends State<SurahNamesWidget> {
+class _SurahNamesPageState extends State<SurahNamesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
           "القرآن",
-          style: TextStyle(fontSize: 35),
+          textDirection: TextDirection.rtl,
+          style: TextStyle(
+            fontSize: 35,
+            fontFamily: 'ScheherazadeNew',
+          ),
         ),
         centerTitle: true,
         backgroundColor: Colors.green,
@@ -68,7 +67,7 @@ class _SurahNamesWidgetState extends State<SurahNamesWidget> {
                                     animation,
                                     secondaryAnimation,
                                   ) =>
-                                      SurahWidget(
+                                      SurahPage(
                                     surahIndex: index,
                                     name: suras[index].englishName,
                                   ),
@@ -140,7 +139,9 @@ class _SurahNamesWidgetState extends State<SurahNamesWidget> {
                                       children: [
                                         Text(
                                           suras[index].name,
+                                          textDirection: TextDirection.rtl,
                                           style: const TextStyle(
+                                            fontFamily: 'ScheherazadeNew',
                                             fontWeight: FontWeight.bold,
                                             fontSize: 18,
                                             color: Colors.white,

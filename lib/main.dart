@@ -1,6 +1,5 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:islam/surah_names_widget.dart';
+import 'package:islam/pages/surah_names_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         useMaterial3: true,
       ),
-      home: const SurahNamesWidget(),
+      home: const SurahNamesPage(),
     );
   }
 }
