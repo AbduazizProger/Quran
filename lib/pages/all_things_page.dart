@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:islam/components/settings_page.dart';
-import 'package:islam/components/surah_audios_page.dart';
+import 'package:islam/pages/settings_page.dart';
+import 'package:islam/pages/surah_audios_page.dart';
 import 'package:islam/pages/surah_names_page.dart';
 import 'package:islam/models/suras.dart';
 
