@@ -32,9 +32,10 @@ class SurahContentWidget extends StatelessWidget {
                 child: Text(
                   "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ",
                   textDirection: TextDirection.rtl,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontFamily: 'ScheherazadeNew',
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 27,
                   ),
                 ),
@@ -45,9 +46,10 @@ class SurahContentWidget extends StatelessWidget {
                       child: Text(
                         '$text ۝',
                         textDirection: TextDirection.rtl,
+                        textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontFamily: 'ScheherazadeNew',
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 23,
                           height: 2.25,
                         ),
@@ -66,13 +68,14 @@ class SurahContentWidget extends StatelessWidget {
             child: Text(
               '$text ۝',
               textDirection: TextDirection.rtl,
+              textAlign: TextAlign.center,
               textHeightBehavior: const TextHeightBehavior(
                 applyHeightToFirstAscent: false,
                 applyHeightToLastDescent: false,
               ),
               style: const TextStyle(
                 fontFamily: 'ScheherazadeNew',
-                color: Colors.white,
+                color: Colors.black,
                 fontSize: 23,
                 height: 2.25,
               ),

@@ -43,7 +43,7 @@ class _SurahPageState extends State<SurahPage> {
           leading: IconButton(
             icon: const Icon(
               CupertinoIcons.back,
-              color: Colors.white,
+              color: Colors.black,
               size: 40,
             ),
             onPressed: () {
@@ -51,10 +51,9 @@ class _SurahPageState extends State<SurahPage> {
             },
           ),
           centerTitle: true,
-          backgroundColor: Colors.green,
         ),
         body: Container(
-          color: Colors.black,
+          color: Colors.white,
           child: FutureBuilder(
             future: fetchSurah(widget.surahIndex),
             builder:
@@ -68,7 +67,7 @@ class _SurahPageState extends State<SurahPage> {
               } else if (snapshot.hasError) {
                 return Text(
                   '${snapshot.error}',
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.black),
                 );
               } else {
                 return const Center(child: CircularProgressIndicator());

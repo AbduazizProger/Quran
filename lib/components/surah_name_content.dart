@@ -17,9 +17,18 @@ class SurahNameContent extends StatelessWidget {
       padding: const EdgeInsets.all(6.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: Colors.white,
-        ),
+        // border: Border.all(
+        //   color: Colors.white,
+        // ),
+        boxShadow: const [
+          BoxShadow(
+            blurRadius: 12,
+            spreadRadius: 4,
+            offset: Offset(5, 7),
+            color: Colors.grey,
+            blurStyle: BlurStyle.outer,
+          ),
+        ],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -31,7 +40,7 @@ class SurahNameContent extends StatelessWidget {
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
-                color: Colors.white,
+                // color: Colors.white,
               ),
             ),
           ),
@@ -43,7 +52,7 @@ class SurahNameContent extends StatelessWidget {
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
-                  color: Colors.white,
+                  // color: Colors.white,
                 ),
               ),
               Text(
@@ -51,7 +60,7 @@ class SurahNameContent extends StatelessWidget {
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
-                  color: Colors.white,
+                  // color: Colors.white,
                 ),
               ),
             ],
@@ -67,7 +76,7 @@ class SurahNameContent extends StatelessWidget {
                     fontFamily: 'ScheherazadeNew',
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
-                    color: Colors.white,
+                    // color: Colors.white,
                   ),
                 ),
                 Text(
@@ -75,7 +84,7 @@ class SurahNameContent extends StatelessWidget {
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
-                    color: Colors.white,
+                    // color: Colors.white,
                   ),
                 ),
               ],

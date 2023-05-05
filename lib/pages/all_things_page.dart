@@ -51,16 +51,15 @@ class _AllThingsPageState extends State<AllThingsPage> {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.green,
       ),
       body: definePage(),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.transparent,
         currentIndex: pageIndex,
-        selectedItemColor: Colors.amber,
-        unselectedItemColor: Colors.white,
+        unselectedItemColor: Colors.black,
         showUnselectedLabels: true,
         showSelectedLabels: false,
+        elevation: 0,
         onTap: (value) {
           setState(() {
             pageIndex = value;
@@ -74,17 +73,18 @@ class _AllThingsPageState extends State<AllThingsPage> {
               children: const [
                 Icon(
                   Icons.book_outlined,
-                  color: Colors.white,
+                  color: Colors.blueGrey,
+                  size: 30,
                 ),
                 Text(
                   ' Quran',
-                  style: TextStyle(color: Colors.amber),
+                  style: TextStyle(color: Colors.black),
                 ),
               ],
             ),
             icon: const Icon(
               Icons.book_outlined,
-              color: Colors.white,
+              color: Colors.black,
             ),
             label: 'Quran',
           ),
@@ -95,17 +95,18 @@ class _AllThingsPageState extends State<AllThingsPage> {
               children: const [
                 Icon(
                   Icons.audiotrack_rounded,
-                  color: Colors.white,
+                  color: Colors.blueGrey,
+                  size: 30,
                 ),
                 Text(
                   ' Audio',
-                  style: TextStyle(color: Colors.amber),
+                  style: TextStyle(color: Colors.black),
                 ),
               ],
             ),
             icon: const Icon(
               Icons.audiotrack_rounded,
-              color: Colors.white,
+              color: Colors.black,
             ),
             label: 'Audio',
           ),
@@ -116,17 +117,18 @@ class _AllThingsPageState extends State<AllThingsPage> {
               children: const [
                 Icon(
                   Icons.settings,
-                  color: Colors.white,
+                  color: Colors.blueGrey,
+                  size: 30,
                 ),
                 Text(
                   ' Settings',
-                  style: TextStyle(color: Colors.amber),
+                  style: TextStyle(color: Colors.black),
                 ),
               ],
             ),
             icon: const Icon(
               Icons.settings,
-              color: Colors.white,
+              color: Colors.black,
             ),
             label: 'Settings',
           ),

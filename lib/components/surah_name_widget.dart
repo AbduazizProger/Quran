@@ -17,7 +17,7 @@ class SurahNameWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(4.0),
+        padding: const EdgeInsets.all(8.0),
         child: ConstrainedBox(
           constraints: const BoxConstraints(
             maxWidth: 500,

@@ -11,7 +11,7 @@ class SurahNamesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.black,
+      color: Colors.white,
       child: FutureBuilder(
         future: fetchSuras(),
         builder: (BuildContext context, AsyncSnapshot<List<Suras>> snapshot) {
