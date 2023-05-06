@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islam/models/surah.dart';
 
-class SurahNameContent extends StatelessWidget {
-  const SurahNameContent({
+class SurahAudioNameWidget extends StatelessWidget {
+  const SurahAudioNameWidget({
     super.key,
     required this.suras,
     required this.index,
@@ -51,7 +51,7 @@ class SurahNameContent extends StatelessWidget {
                 ),
               ),
               Text(
-                suras[index].revelationType,
+                suras[index].name,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
@@ -59,27 +59,12 @@ class SurahNameContent extends StatelessWidget {
               ),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: Column(
-              children: [
-                Text(
-                  suras[index].name,
-                  textDirection: TextDirection.rtl,
-                  style: const TextStyle(
-                    fontFamily: 'ScheherazadeNew',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
-                ),
-                Text(
-                  suras[index].numberOfAyahs.toString(),
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
-                ),
-              ],
+          const Padding(
+            padding: EdgeInsets.only(right: 8.0),
+            child: Icon(
+              Icons.save_alt,
+              color: Colors.indigo,
+              size: 30,
             ),
           )
         ],

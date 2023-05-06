@@ -2,15 +2,15 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islam/components/surah_content_widget.dart';
-import 'package:islam/models/surah.dart';
+import 'package:islam/models/ayah.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
-Future<List<Surah>> fetchSurah(int index) async {
+Future<List<Ayah>> fetchSurah(int index) async {
   final response =
       await rootBundle.loadString('assets/json/surah_${index + 1}.json');
-  List<Surah> ayas = [];
+  List<Ayah> ayas = [];
   for (var el in jsonDecode(response)['data']['ayahs']) {
-    ayas.add(Surah.fromJson(el));
+    ayas.add(Ayah.fromJson(el));
   }
   return ayas;
 }
@@ -57,9 +57,9 @@ class _SurahPageState extends State<SurahPage> {
           child: FutureBuilder(
             future: fetchSurah(widget.surahIndex),
             builder:
-                (BuildContext context, AsyncSnapshot<List<Surah>> snapshot) {
+                (BuildContext context, AsyncSnapshot<List<Ayah>> snapshot) {
               if (snapshot.hasData) {
-                List<Surah> ayas = snapshot.data!;
+                List<Ayah> ayas = snapshot.data!;
                 return Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: SurahContentWidget(ayas: ayas),

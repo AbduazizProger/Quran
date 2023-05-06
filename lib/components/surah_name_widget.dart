@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islam/components/surah_name_content.dart';
-import 'package:islam/models/suras.dart';
+import 'package:islam/models/surah.dart';
 import 'package:islam/pages/surah_page.dart';
 
 class SurahNameWidget extends StatelessWidget {
@@ -10,7 +10,7 @@ class SurahNameWidget extends StatelessWidget {
     required this.index,
   });
 
-  final List<Suras> suras;
+  final List<Surah> suras;
   final int index;
 
   @override

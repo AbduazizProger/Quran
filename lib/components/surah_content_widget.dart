@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islam/models/surah.dart';
+import 'package:islam/models/ayah.dart';
 
 class SurahContentWidget extends StatelessWidget {
   const SurahContentWidget({
@@ -7,7 +7,7 @@ class SurahContentWidget extends StatelessWidget {
     required this.ayas,
   });
 
-  final List<Surah> ayas;
+  final List<Ayah> ayas;
 
   @override
   Widget build(BuildContext context) {

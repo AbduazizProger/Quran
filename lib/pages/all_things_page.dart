@@ -1,16 +1,18 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:islam/components/bottom_navigation.dart';
+import 'package:islam/models/suras_list_provider.dart';
 import 'package:islam/pages/settings_page.dart';
 import 'package:islam/pages/surah_audios_page.dart';
 import 'package:islam/pages/surah_names_page.dart';
-import 'package:islam/models/suras.dart';
+import 'package:islam/models/surah.dart';
 
-Future<List<Suras>> fetchSuras() async {
+Future<List<Surah>> fetchSuras() async {
   final response = await rootBundle.loadString('assets/json/surah.json');
-  List<Suras> suras = [];
+  List<Surah> suras = [];
   for (var el in jsonDecode(response)['data']) {
-    suras.add(Suras.fromJson(el));
+    suras.add(Surah.fromJson(el));
   }
   return suras;
 }
@@ -52,7 +54,21 @@ class _AllThingsPageState extends State<AllThingsPage> {
         ),
         centerTitle: true,
       ),
-      body: definePage(),
+      body: FutureBuilder(
+          future: fetchSuras(),
+          builder: (BuildContext context, AsyncSnapshot<List<Surah>> snapshot) {
+            if (snapshot.hasData) {
+              List<Surah> suras = snapshot.data!;
+              return SurasListProvider(
+                suras: suras,
+                child: definePage(),
+              );
+            } else if (snapshot.hasError) {
+              return Text('${snapshot.error}');
+            } else {
+              return const Center(child: CircularProgressIndicator());
+            }
+          }),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.transparent,
         currentIndex: pageIndex,
@@ -65,74 +81,7 @@ class _AllThingsPageState extends State<AllThingsPage> {
             pageIndex = value;
           });
         },
-        items: [
-          BottomNavigationBarItem(
-            activeIcon: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Icon(
-                  Icons.book_outlined,
-                  color: Colors.blueGrey,
-                  size: 30,
-                ),
-                Text(
-                  ' Quran',
-                  style: TextStyle(color: Colors.black),
-                ),
-              ],
-            ),
-            icon: const Icon(
-              Icons.book_outlined,
-              color: Colors.black,
-            ),
-            label: 'Quran',
-          ),
-          BottomNavigationBarItem(
-            activeIcon: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Icon(
-                  Icons.audiotrack_rounded,
-                  color: Colors.blueGrey,
-                  size: 30,
-                ),
-                Text(
-                  ' Audio',
-                  style: TextStyle(color: Colors.black),
-                ),
-              ],
-            ),
-            icon: const Icon(
-              Icons.audiotrack_rounded,
-              color: Colors.black,
-            ),
-            label: 'Audio',
-          ),
-          BottomNavigationBarItem(
-            activeIcon: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Icon(
-                  Icons.settings,
-                  color: Colors.blueGrey,
-                  size: 30,
-                ),
-                Text(
-                  ' Settings',
-                  style: TextStyle(color: Colors.black),
-                ),
-              ],
-            ),
-            icon: const Icon(
-              Icons.settings,
-              color: Colors.black,
-            ),
-            label: 'Settings',
-          ),
-        ],
+        items: allNavigators(),
       ),
     );
   }
