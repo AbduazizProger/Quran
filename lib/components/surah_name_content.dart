@@ -14,7 +14,7 @@ class SurahNameContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(6.0),
+      padding: const EdgeInsets.all(13.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         boxShadow: const [
