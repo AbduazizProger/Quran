@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 List<BottomNavigationBarItem> allNavigators() {
-  return [
+  return const [
     BottomNavigationBarItem(
       activeIcon: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
+        children: [
           Icon(
             Icons.book_outlined,
             color: Colors.blueGrey,
@@ -18,7 +18,7 @@ List<BottomNavigationBarItem> allNavigators() {
           ),
         ],
       ),
-      icon: const Icon(
+      icon: Icon(
         Icons.book_outlined,
         color: Colors.black,
       ),
@@ -28,7 +28,7 @@ List<BottomNavigationBarItem> allNavigators() {
       activeIcon: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
+        children: [
           Icon(
             Icons.audiotrack_rounded,
             color: Colors.blueGrey,
@@ -40,33 +40,11 @@ List<BottomNavigationBarItem> allNavigators() {
           ),
         ],
       ),
-      icon: const Icon(
+      icon: Icon(
         Icons.audiotrack_rounded,
         color: Colors.black,
       ),
       label: 'Audio',
-    ),
-    BottomNavigationBarItem(
-      activeIcon: Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Icon(
-            Icons.settings,
-            color: Colors.blueGrey,
-            size: 30,
-          ),
-          Text(
-            ' Settings',
-            style: TextStyle(color: Colors.black),
-          ),
-        ],
-      ),
-      icon: const Icon(
-        Icons.settings,
-        color: Colors.black,
-      ),
-      label: 'Settings',
     ),
   ];
 }

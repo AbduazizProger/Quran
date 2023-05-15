@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:islam/components/bottom_navigation.dart';
 import 'package:islam/components/get_suras.dart';
-import 'package:islam/pages/settings_page.dart';
 import 'package:islam/pages/surah_audios_page.dart';
 import 'package:islam/pages/surah_names_page.dart';
 import 'package:islam/models/surah.dart';
@@ -34,9 +33,7 @@ class _AllThingsPageState extends State<AllThingsPage> {
   ];
 
   Widget definePage() {
-    if (pageIndex == 2) {
-      return const SettingsPage();
-    } else if (pageIndex == 1) {
+    if (pageIndex == 1) {
       return const SurahAudiosPage();
     } else {
       return const SurahNamesPage();

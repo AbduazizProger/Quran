@@ -26,9 +26,18 @@ class _SurahAudiosPageState extends State<SurahAudiosPage> {
       bool isConnected = await checkInternetConnection();
       if (isConnected) {
         if (numberPlaying != 0 && !shouldNotify) {
+          String numberUrl = '';
+          if (numberPlaying < 10) {
+            numberUrl = '00$numberPlaying';
+          } else if (numberPlaying < 100) {
+            numberUrl = '0$numberPlaying';
+          } else {
+            numberUrl = '$numberPlaying';
+          }
+          print('https://server6.mp3quran.net/akdr/$numberUrl.mp3');
           audio.play(
             UrlSource(
-              'https://server6.mp3quran.net/akdr/00$numberPlaying.mp3',
+              'https://server6.mp3quran.net/akdr/$numberUrl.mp3',
             ),
           );
         }
