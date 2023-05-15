@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islam/components/ayah_widget.dart';
 import 'package:islam/models/ayah.dart';
 
 class SurahContentWidget extends StatelessWidget {
@@ -12,77 +13,48 @@ class SurahContentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: ayas.length,
-      itemBuilder: (context, index) {
-        String text = ayas[index].text;
-        if (text.contains("بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ") ||
-            text.contains('بِّسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ')) {
-          if (text.contains("بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ")) {
-            text = text.split("بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ")[1];
-          } else {
-            text = text.split("بِّسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ")[1];
+        itemCount: ayas.length,
+        itemBuilder: (context, index) {
+          String text = ayas[index].text;
+          if (ayas[0].text == 'بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ\n') {
+            return AyahWidget(
+              text: index == 0
+                  ? 'أَعُوذُ بالله مِنَ الشَّيْطَانِ الرَّجِيمِ\n$text'
+                  : text,
+              ayas: ayas,
+              index: index,
+              shouldMinus: true,
+            );
           }
-          if (text.contains('\n')) {
-            text = text.split('\n')[0];
-          }
-          return Column(
-            children: [
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ",
-                  textDirection: TextDirection.rtl,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: 'ScheherazadeNew',
-                    color: Colors.black,
-                    fontSize: 27,
-                  ),
-                ),
-              ),
-              text != '' && text != '\n'
-                  ? Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text(
-                        '$text ۝',
-                        textDirection: TextDirection.rtl,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontFamily: 'ScheherazadeNew',
-                          color: Colors.black,
-                          fontSize: 23,
-                          height: 2.25,
-                        ),
-                      ),
-                    )
-                  : const SizedBox(),
-            ],
-          );
-        }
-        if (text.contains('\n')) {
-          text = text.split('\n')[0];
-        }
-        return Center(
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Text(
-              '$text ۝',
-              textDirection: TextDirection.rtl,
-              textAlign: TextAlign.center,
-              textHeightBehavior: const TextHeightBehavior(
-                applyHeightToFirstAscent: false,
-                applyHeightToLastDescent: false,
-              ),
-              style: const TextStyle(
-                fontFamily: 'ScheherazadeNew',
-                color: Colors.black,
-                fontSize: 23,
-                height: 2.25,
-              ),
-            ),
-          ),
-        );
-      },
-    );
+          return text.contains('بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ') ||
+                  text.contains('بِّسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ')
+              ? Column(
+                  children: [
+                    AyahWidget(
+                      text: 'بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ\n',
+                      ayas: ayas,
+                      index: index,
+                      shouldMinus: false,
+                    ),
+                    AyahWidget(
+                      text: !text.contains(
+                              'بِّسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ')
+                          ? text.split(
+                              'بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ')[1]
+                          : text.split(
+                              'بِّسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ')[1],
+                      ayas: ayas,
+                      index: index,
+                      shouldMinus: false,
+                    ),
+                  ],
+                )
+              : AyahWidget(
+                  text: text,
+                  ayas: ayas,
+                  index: index,
+                  shouldMinus: false,
+                );
+        });
   }
 }

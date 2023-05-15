@@ -1,6 +1,6 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:islam/models/audio_provider.dart';
-import 'package:islam/models/playing_audio.dart';
+import 'package:islam/models/audio_playing.dart';
 import 'package:islam/pages/all_things_page.dart';
 
 void main() {
@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         useMaterial3: true,
       ),
-      home: AudioProvider(
-        audio: PlayingAudio(),
+      home: AudioPlaying(
+        audio: AudioPlayer(),
         child: const AllThingsPage(),
       ),
     );

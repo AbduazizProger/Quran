@@ -62,7 +62,7 @@ class SurahAudioNameWidget extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.only(right: 8.0),
             child: Icon(
-              Icons.downloading_rounded,
+              Icons.play_arrow_rounded,
               color: Colors.indigo,
               size: 30,
             ),

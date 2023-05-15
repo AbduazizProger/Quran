@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:islam/components/bottom_navigation.dart';
-import 'package:islam/models/suras_list_provider.dart';
+import 'package:islam/components/get_suras.dart';
 import 'package:islam/pages/settings_page.dart';
 import 'package:islam/pages/surah_audios_page.dart';
 import 'package:islam/pages/surah_names_page.dart';
@@ -26,6 +26,12 @@ class AllThingsPage extends StatefulWidget {
 
 class _AllThingsPageState extends State<AllThingsPage> {
   int pageIndex = 0;
+
+  List<Widget> pages = const [
+    GetAllSuras(pageIndex: 0),
+    GetAllSuras(pageIndex: 1),
+    GetAllSuras(pageIndex: 2),
+  ];
 
   Widget definePage() {
     if (pageIndex == 2) {
@@ -54,21 +60,10 @@ class _AllThingsPageState extends State<AllThingsPage> {
         ),
         centerTitle: true,
       ),
-      body: FutureBuilder(
-          future: fetchSuras(),
-          builder: (BuildContext context, AsyncSnapshot<List<Surah>> snapshot) {
-            if (snapshot.hasData) {
-              List<Surah> suras = snapshot.data!;
-              return SurasListProvider(
-                suras: suras,
-                child: definePage(),
-              );
-            } else if (snapshot.hasError) {
-              return Text('${snapshot.error}');
-            } else {
-              return const Center(child: CircularProgressIndicator());
-            }
-          }),
+      body: IndexedStack(
+        index: pageIndex,
+        children: pages,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.transparent,
         currentIndex: pageIndex,
