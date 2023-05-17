@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islam/components/about_quran.dart';
 import 'package:islam/components/surah_name_widget.dart';
 import 'package:islam/models/surah.dart';
 import 'package:islam/models/suras_list_provider.dart';
@@ -16,12 +17,14 @@ class SurahNamesPage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: ListView.builder(
-          itemCount: suras.length + 1,
+          itemCount: suras.length + 2,
           itemBuilder: (BuildContext context, int index) {
-            if (index != suras.length) {
-              return SurahNameWidget(suras: suras, index: index);
+            if (index == 0) {
+              return const AboutQuran();
+            } else if (index != suras.length + 1) {
+              return SurahNameWidget(suras: suras, index: index - 1);
             } else {
-              return const SizedBox(height: 60);
+              return const SizedBox(height: 20);
             }
           },
         ),
